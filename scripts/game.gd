@@ -8,6 +8,7 @@ signal game_over
 @onready var moving_environment = $"/root/World/Environment/Moving"
 @onready var collect_sound = $"/root/World/Sounds/CollectSound"
 @onready var score_label = $"/root/World/HUD/UI/Score"
+@onready var ammo_label = $"/root/World/HUD/UI/Ammo"
 @onready var player = $"/root/World/Player"
 @onready var ground = $"/root/World/Environment/Static/Ground"
 @onready var game_over_label = $"/root/World/HUD/UI/GameOver"
@@ -16,6 +17,7 @@ var platform = preload("res://scenes/platform.tscn")
 var platform_collectible_single = preload("res://scenes/platform_collectible_single.tscn")
 var platform_collectible_row = preload("res://scenes/platform_collectible_row.tscn")
 var platform_collectible_rainbow = preload("res://scenes/platform_collectible_rainbow.tscn")
+var platform_collectible_ammo = preload("res://scenes/platform_collectible_ammo.tscn")
 var platform_enemy = preload("res://scenes/platform_enemy.tscn")
 var rng = RandomNumberGenerator.new()
 var last_platform_position = Vector2.ZERO
@@ -46,6 +48,7 @@ func _process(delta):
 	
 	# Update the UI labels
 	score_label.text = "Score %s" % score
+	ammo_label.text = "Ammo %s" % player.ammo
 
 func _spawn_next_platform():
 	var available_platforms = [
@@ -53,6 +56,7 @@ func _spawn_next_platform():
 		platform_collectible_single,
 		platform_collectible_row,
 		platform_collectible_rainbow,
+		platform_collectible_ammo,
 		platform_enemy,
 	]
 
