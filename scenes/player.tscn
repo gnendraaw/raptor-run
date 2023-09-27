@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://f2srqcsjxpof"]
+[gd_scene load_steps=51 format=3 uid="uid://f2srqcsjxpof"]
 
 [ext_resource type="Texture2D" uid="uid://456jwb2nn73n" path="res://assets/sprites/Player/player_jump.png" id="1_3ewgd"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_dfuhr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ckxwaepoxibkt" path="res://assets/sprites/Player/player_double_jump.png" id="2_7krrj"]
 [ext_resource type="Texture2D" uid="uid://b6lc2aqi3nqjf" path="res://assets/sprites/Player/player_run_shoot.png" id="3_njncc"]
 [ext_resource type="AudioStream" uid="uid://bfwxr26w78ojt" path="res://assets/sounds/jump.wav" id="7_nfwv7"]
+[ext_resource type="AudioStream" uid="uid://did7eqqchgfxe" path="res://assets/sounds/player_death.wav" id="8_p7any"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7173f"]
 atlas = ExtResource("1_y5dva")
@@ -319,7 +320,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7dwb"]
 size = Vector2(100, 200)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_dfuhr")
 
@@ -334,3 +335,6 @@ shape = SubResource("RectangleShape2D_i7dwb")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_nfwv7")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_p7any")
